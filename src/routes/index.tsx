@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/AppShell";
 import { ReadinessRing } from "@/components/ReadinessRing";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { BrandMark } from "@/components/BrandMark";
 import { Sparkles, Dumbbell, Apple, Moon, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -25,18 +26,18 @@ function greeting() {
 function HomePage() {
   return (
     <AppShell>
-      <header className="flex items-start justify-between mb-8">
-        <div>
-          <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--glow)] animate-pulse-soft" />
-            Kronia ativa
-          </div>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight">
-            {greeting()}, <span className="text-glow">Kleber</span>
-          </h1>
-          <p className="text-sm text-muted-foreground mt-1">Sistema recalibrado há 14 min.</p>
+      <header className="mb-8">
+        <div className="flex items-center justify-between">
+          <BrandMark size={30} />
+          <ThemeToggle />
         </div>
-        <ThemeToggle />
+        <div className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+          <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--glow)] animate-pulse-soft" />
+          Sistema ativo · recalibrado há 14 min
+        </div>
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight">
+          {greeting()}, <span className="text-glow">Kleber</span>
+        </h1>
       </header>
 
       {/* Adaptation card */}
