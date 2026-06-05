@@ -74,7 +74,6 @@ function HomePage() {
         <ReadinessRing value={82} label="Prontidão" sublabel="ótima" />
         <div className="flex-1 space-y-3">
           <Metric label="HRV" value="68 ms" trend="+4" />
-          <Metric label="Sono" value="7h 42" trend="+0:18" />
           <Metric label="Carga" value="6.4" trend="-0.3" />
         </div>
       </section>
@@ -85,7 +84,6 @@ function HomePage() {
         <ul className="mt-3 space-y-2">
           <Row title="Treino A — Empurrar" meta="48 min · 6 exercícios" />
           <Row title="Nutrição" meta="2.480 kcal · P 198 / C 260 / G 78" />
-          <Row title="Janela de sono" meta="23:10 → 06:50" />
         </ul>
       </section>
 

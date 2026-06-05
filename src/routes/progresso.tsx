@@ -65,7 +65,7 @@ function ProgressoPage() {
         <Stat label="Aderência" value="94%" detail="28 de 30 dias" />
         <Stat label="Recuperação" value="Alta" detail="HRV 68 ms" />
         <Stat label="Volume" value="42.8 t" detail="semana" />
-        <Stat label="Sono" value="7h 31" detail="média" />
+        <Stat label="Carga" value="6.4" detail="média semanal" />
       </section>
 
       <section className="mt-6 glass rounded-3xl p-5">
