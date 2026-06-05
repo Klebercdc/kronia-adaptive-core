@@ -31,7 +31,7 @@ function PerfilPage() {
           <Sparkles className="h-3.5 w-3.5" /> Inteligência Kronia
         </div>
         <p className="mt-3 text-base leading-relaxed">
-          Sua IA está aprendendo seu padrão de sono e ajustando o treino antes do tempo. <span className="text-glow">3 adaptações</span> nas últimas 24h.
+          Sua IA está aprendendo seus padrões de treino e recuperação para ajustar a carga antes do tempo. <span className="text-glow">3 adaptações</span> nas últimas 24h.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-3">
           <Mini label="Modelo" value="adaptativo v2" />
@@ -47,7 +47,6 @@ function PerfilPage() {
 
         <Group title="Biomarcadores">
           <Item icon={<Activity className="h-4 w-4" />} label="HRV (opcional)" right="conectar" />
-          <Item icon={<Activity className="h-4 w-4" />} label="Sono" right="conectado" />
           <Item icon={<Activity className="h-4 w-4" />} label="Glicemia (opcional)" right="conectar" />
         </Group>
 
