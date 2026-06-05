@@ -1,149 +1,152 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { AppShell } from "@/components/AppShell";
-import { ReadinessRing } from "@/components/ReadinessRing";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { BrandMark } from "@/components/BrandMark";
-import { Sparkles, Dumbbell, Apple, Moon, ArrowRight } from "lucide-react";
+import logo from "@/assets/kronia-logo.png";
+import heroImg from "@/assets/welcome-hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "KRONIA — Hoje" },
-      { name: "description", content: "Seu sistema adaptou hoje. Treino, nutrição e recuperação calibrados pela IA." },
+      { title: "KRONIA — O coach que nunca dorme" },
+      {
+        name: "description",
+        content:
+          "KRONIA é o coach adaptativo que calibra seu treino, nutrição e recuperação em tempo real.",
+      },
+      { property: "og:title", content: "KRONIA — O coach que nunca dorme" },
+      {
+        property: "og:description",
+        content: "Treino, nutrição e recuperação adaptados ao seu corpo, todos os dias.",
+      },
     ],
   }),
-  component: HomePage,
+  component: WelcomePage,
 });
 
-function greeting() {
-  const h = new Date().getHours();
-  if (h < 6) return "Boa madrugada";
-  if (h < 12) return "Bom dia";
-  if (h < 18) return "Boa tarde";
-  return "Boa noite";
-}
-
-function HomePage() {
+function WelcomePage() {
   return (
-    <AppShell>
-      <header className="mb-5">
-        <div className="flex items-center justify-between">
-          <BrandMark size={40} />
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--glow)] animate-pulse-soft" />
-              ativo · 14m
-            </div>
-            <ThemeToggle />
+    <main
+      className="relative min-h-screen w-full overflow-hidden bg-[color:var(--background)] text-foreground"
+      style={{ paddingTop: "env(safe-area-inset-top)", paddingBottom: "env(safe-area-inset-bottom)" }}
+    >
+      {/* Background ambient glow */}
+      <div className="pointer-events-none absolute inset-0 -z-0">
+        <div
+          className="absolute left-1/2 top-[18%] h-[420px] w-[420px] -translate-x-1/2 rounded-full blur-[120px] opacity-60"
+          style={{ background: "radial-gradient(circle, var(--glow) 0%, transparent 70%)" }}
+        />
+        <div
+          className="absolute left-1/2 bottom-0 h-[260px] w-[640px] -translate-x-1/2 blur-[90px] opacity-40"
+          style={{ background: "radial-gradient(ellipse, var(--glow) 0%, transparent 70%)" }}
+        />
+      </div>
+
+      {/* Faint grid */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-0 opacity-[0.08]"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-md flex-col px-6">
+        {/* Logo + Wordmark */}
+        <div className="flex flex-col items-center pt-12 animate-float-in">
+          <div className="relative">
+            <div
+              className="absolute inset-0 -m-6 rounded-full blur-2xl opacity-80 animate-pulse-soft"
+              style={{ background: "var(--glow)" }}
+            />
+            <img
+              src={logo}
+              alt="KRONIA"
+              width={104}
+              height={104}
+              className="relative drop-shadow-[0_0_24px_color-mix(in_oklch,var(--glow)_70%,transparent)]"
+              style={{ width: 104, height: 104, objectFit: "contain" }}
+            />
+          </div>
+
+          <h1 className="mt-5 text-[34px] font-semibold tracking-[0.34em] text-foreground/95">
+            KRONIA
+          </h1>
+
+          <div className="mt-3 flex items-center gap-3">
+            <span
+              className="h-px w-10"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, color-mix(in oklch, var(--glow) 70%, transparent))",
+              }}
+            />
+            <span className="text-[12px] tracking-[0.22em] text-[color:var(--glow)]">
+              O coach que nunca dorme
+            </span>
+            <span
+              className="h-px w-10"
+              style={{
+                background:
+                  "linear-gradient(90deg, color-mix(in oklch, var(--glow) 70%, transparent), transparent)",
+              }}
+            />
           </div>
         </div>
-        <h1 className="mt-3 text-[22px] font-semibold tracking-tight leading-none">
-          {greeting()}, <span className="text-glow">Kleber</span>
-        </h1>
-      </header>
 
-      {/* Adaptation card */}
-      <section className="glass-elevated rounded-3xl px-5 py-4 relative overflow-hidden">
-        <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-[color:var(--glow)]/15 blur-3xl pointer-events-none" />
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            <Sparkles className="h-3 w-3" />
-            Adaptação de hoje
+        {/* Hero image */}
+        <div className="relative mt-6 flex-1 flex items-center justify-center animate-float-in">
+          <div className="relative w-full max-w-[360px] aspect-square">
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 45%, transparent 35%, var(--background) 78%)",
+              }}
+            />
+            <img
+              src={heroImg}
+              alt="Atleta com energia fluindo pela coluna"
+              width={720}
+              height={720}
+              className="h-full w-full object-contain"
+              style={{
+                maskImage:
+                  "radial-gradient(ellipse at 50% 50%, black 55%, transparent 85%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at 50% 50%, black 55%, transparent 85%)",
+              }}
+            />
           </div>
-          <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-            <span className="h-1 w-1 rounded-full bg-[color:var(--glow)]" />
-            ao vivo
-          </span>
         </div>
-        <h2 className="text-[19px] font-semibold mt-2 leading-snug tracking-tight">
-          Sistema <span className="text-glow">recalibrado</span>
-        </h2>
-        <p className="text-[12.5px] text-muted-foreground mt-1 leading-snug">
-          Hoje o foco é recuperação ativa — HRV abaixo da média e carga acumulada acima do limiar.
-        </p>
 
-        <div className="mt-4 grid grid-cols-3 gap-2">
-          <AdaptCell icon={<Dumbbell className="h-3 w-3" />} label="Treino" hint="Volume reduzido" value="−12%" />
-          <AdaptCell icon={<Apple className="h-3 w-3" />} label="Nutrição" hint="Calorias ajustadas" value="+180" />
-          <AdaptCell icon={<Moon className="h-3 w-3" />} label="Recuperação" hint="Foco prioritário" value="Alta" />
+        {/* CTAs */}
+        <div className="pb-8 pt-4 space-y-3 animate-float-in">
+          <Link
+            to="/hoje"
+            className="relative block w-full overflow-hidden rounded-2xl py-4 text-center text-[15px] font-medium text-[oklch(0.14_0.015_255)] transition-transform active:scale-[0.99]"
+            style={{
+              background:
+                "linear-gradient(90deg, oklch(0.78 0.14 230), oklch(0.68 0.16 270))",
+              boxShadow:
+                "0 10px 32px -10px color-mix(in oklch, var(--glow) 60%, transparent), inset 0 1px 0 oklch(1 0 0 / 0.25)",
+            }}
+          >
+            Criar conta
+          </Link>
+
+          <Link
+            to="/hoje"
+            className="block w-full rounded-2xl border border-[color:var(--border)] py-4 text-center text-[14px] font-medium text-foreground/90 glass transition-transform active:scale-[0.99]"
+          >
+            Já tenho conta
+          </Link>
+
+          <p className="pt-1 text-center text-[11px] tracking-wide text-muted-foreground">
+            Free <span className="opacity-50">·</span> Pro R$29,90{" "}
+            <span className="opacity-50">·</span> Ultra R$59,90
+          </p>
         </div>
-      </section>
-
-      {/* Readiness */}
-      <section className="mt-6 glass rounded-3xl p-6 flex items-center gap-6">
-        <ReadinessRing value={82} label="Prontidão" sublabel="ótima" />
-        <div className="flex-1 space-y-3">
-          <Metric label="HRV" value="68 ms" trend="+4" />
-          <Metric label="Carga" value="6.4" trend="-0.3" />
-        </div>
-      </section>
-
-      {/* Summary */}
-      <section className="mt-6">
-        <SectionTitle>Resumo do dia</SectionTitle>
-        <ul className="mt-3 space-y-2">
-          <Row title="Treino A — Empurrar" meta="48 min · 6 exercícios" />
-          <Row title="Nutrição" meta="2.480 kcal · P 198 / C 260 / G 78" />
-        </ul>
-      </section>
-
-      <Link
-        to="/treino"
-        className="mt-8 w-full flex items-center justify-between glass-elevated rounded-2xl px-5 py-4 ring-glow transition-transform active:scale-[0.99]"
-      >
-        <div>
-          <div className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">Próximo passo</div>
-          <div className="text-base font-medium mt-0.5">Continuar — iniciar treino</div>
-        </div>
-        <ArrowRight className="h-5 w-5" />
-      </Link>
-    </AppShell>
-  );
-}
-
-function AdaptCell({ icon, label, value, hint }: { icon: React.ReactNode; label: string; value: string; hint: string }) {
-  return (
-    <div className="glass rounded-xl px-2.5 py-2.5">
-      <div className="flex items-center gap-1 text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-        {icon}
-        {label}
       </div>
-      <div className="mt-1.5 text-[10px] text-foreground/70 leading-tight">{hint}</div>
-      <div className="mt-1 text-[15px] font-semibold tracking-tight text-glow">{value}</div>
-    </div>
-  );
-}
-
-function Metric({ label, value, trend }: { label: string; value: string; trend: string }) {
-  const positive = trend.startsWith("+");
-  return (
-    <div className="flex items-baseline justify-between">
-      <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{label}</span>
-      <span className="flex items-baseline gap-2">
-        <span className="text-base font-medium">{value}</span>
-        <span className={`text-[11px] ${positive ? "text-[color:var(--glow)]" : "text-muted-foreground"}`}>{trend}</span>
-      </span>
-    </div>
-  );
-}
-
-export function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-3">
-      <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{children}</span>
-      <span className="flex-1 hairline" />
-    </div>
-  );
-}
-
-function Row({ title, meta }: { title: string; meta: string }) {
-  return (
-    <li className="glass rounded-2xl px-4 py-3 flex items-center justify-between">
-      <div>
-        <div className="text-sm font-medium">{title}</div>
-        <div className="text-xs text-muted-foreground mt-0.5">{meta}</div>
-      </div>
-      <ArrowRight className="h-4 w-4 text-muted-foreground" />
-    </li>
+    </main>
   );
 }

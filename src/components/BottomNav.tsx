@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Dumbbell, UtensilsCrossed, User } from "lucide-react";
 
 const items = [
-  { to: "/", label: "Home", icon: Home },
+  { to: "/hoje", label: "Hoje", icon: Home },
   { to: "/treino", label: "Treino", icon: Dumbbell },
   { to: "/dieta", label: "Dieta", icon: UtensilsCrossed },
   { to: "/perfil", label: "Perfil", icon: User },
@@ -23,7 +23,7 @@ export function BottomNav() {
       <div className="mx-auto max-w-md px-2">
         <div className="flex items-center justify-between h-12">
           {items.map(({ to, label, icon: Icon }) => {
-            const active = to === "/" ? pathname === "/" : pathname.startsWith(to);
+            const active = pathname === to || pathname.startsWith(to + "/");
             return (
               <Link
                 key={to}
