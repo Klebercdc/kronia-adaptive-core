@@ -26,35 +26,46 @@ function greeting() {
 function HomePage() {
   return (
     <AppShell>
-      <header className="mb-8">
+      <header className="mb-5">
         <div className="flex items-center justify-between">
-          <BrandMark size={30} />
-          <ThemeToggle />
+          <BrandMark size={24} />
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--glow)] animate-pulse-soft" />
+              ativo · 14m
+            </div>
+            <ThemeToggle />
+          </div>
         </div>
-        <div className="mt-6 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-          <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--glow)] animate-pulse-soft" />
-          Sistema ativo · recalibrado há 14 min
-        </div>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight">
+        <h1 className="mt-3 text-[22px] font-semibold tracking-tight leading-none">
           {greeting()}, <span className="text-glow">Kleber</span>
         </h1>
       </header>
 
       {/* Adaptation card */}
-      <section className="glass-elevated rounded-3xl p-6 relative overflow-hidden">
-        <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-[color:var(--glow)]/15 blur-3xl pointer-events-none" />
-        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          <Sparkles className="h-3.5 w-3.5" />
-          Adaptação de hoje
+      <section className="glass-elevated rounded-3xl px-5 py-4 relative overflow-hidden">
+        <div className="absolute -top-16 -right-16 h-44 w-44 rounded-full bg-[color:var(--glow)]/15 blur-3xl pointer-events-none" />
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            <Sparkles className="h-3 w-3" />
+            Adaptação de hoje
+          </div>
+          <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="h-1 w-1 rounded-full bg-[color:var(--glow)]" />
+            ao vivo
+          </span>
         </div>
-        <h2 className="text-2xl font-semibold mt-3 leading-tight">
-          Seu sistema adaptou <br /> sua rotina para <span className="text-glow">recuperação ativa</span>.
+        <h2 className="text-[19px] font-semibold mt-2 leading-snug tracking-tight">
+          Sistema <span className="text-glow">recalibrado</span>
         </h2>
+        <p className="text-[12.5px] text-muted-foreground mt-1 leading-snug">
+          Hoje o foco é recuperação ativa — HRV abaixo da média e carga acumulada acima do limiar.
+        </p>
 
-        <div className="mt-6 grid grid-cols-3 gap-3">
-          <AdaptCell icon={<Dumbbell className="h-4 w-4" />} label="Treino" value="-12%" hint="volume" />
-          <AdaptCell icon={<Apple className="h-4 w-4" />} label="Nutrição" value="+180" hint="kcal" />
-          <AdaptCell icon={<Moon className="h-4 w-4" />} label="Recuperação" value="Alta" hint="prioridade" />
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          <AdaptCell icon={<Dumbbell className="h-3 w-3" />} label="Treino" hint="Volume reduzido" value="−12%" />
+          <AdaptCell icon={<Apple className="h-3 w-3" />} label="Nutrição" hint="Calorias ajustadas" value="+180" />
+          <AdaptCell icon={<Moon className="h-3 w-3" />} label="Recuperação" hint="Foco prioritário" value="Alta" />
         </div>
       </section>
 
