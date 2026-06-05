@@ -14,7 +14,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           exit={{ opacity: 0, y: -6, filter: "blur(6px)" }}
           transition={{ duration: 0.38, ease: [0.22, 0.8, 0.2, 1] }}
-          className="mx-auto max-w-md px-5 pt-[max(1.25rem,env(safe-area-inset-top))] pb-32"
+          className="mx-auto max-w-md px-5 pt-[max(1rem,env(safe-area-inset-top))] pb-24"
         >
           {children}
         </motion.div>
