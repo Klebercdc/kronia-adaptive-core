@@ -28,7 +28,7 @@ function HomePage() {
     <AppShell>
       <header className="mb-5">
         <div className="flex items-center justify-between">
-          <BrandMark size={24} />
+          <BrandMark size={40} />
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--glow)] animate-pulse-soft" />
