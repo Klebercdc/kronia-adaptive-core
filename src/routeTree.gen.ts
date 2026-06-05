@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TreinoRouteImport } from './routes/treino'
+import { Route as ProgressoRouteImport } from './routes/progresso'
 import { Route as DietaRouteImport } from './routes/dieta'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TreinoRoute = TreinoRouteImport.update({
   id: '/treino',
   path: '/treino',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressoRoute = ProgressoRouteImport.update({
+  id: '/progresso',
+  path: '/progresso',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DietaRoute = DietaRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dieta': typeof DietaRoute
+  '/progresso': typeof ProgressoRoute
   '/treino': typeof TreinoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dieta': typeof DietaRoute
+  '/progresso': typeof ProgressoRoute
   '/treino': typeof TreinoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dieta': typeof DietaRoute
+  '/progresso': typeof ProgressoRoute
   '/treino': typeof TreinoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dieta' | '/treino'
+  fullPaths: '/' | '/dieta' | '/progresso' | '/treino'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dieta' | '/treino'
-  id: '__root__' | '/' | '/dieta' | '/treino'
+  to: '/' | '/dieta' | '/progresso' | '/treino'
+  id: '__root__' | '/' | '/dieta' | '/progresso' | '/treino'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DietaRoute: typeof DietaRoute
+  ProgressoRoute: typeof ProgressoRoute
   TreinoRoute: typeof TreinoRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/treino'
       fullPath: '/treino'
       preLoaderRoute: typeof TreinoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progresso': {
+      id: '/progresso'
+      path: '/progresso'
+      fullPath: '/progresso'
+      preLoaderRoute: typeof ProgressoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dieta': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DietaRoute: DietaRoute,
+  ProgressoRoute: ProgressoRoute,
   TreinoRoute: TreinoRoute,
 }
 export const routeTree = rootRouteImport
