@@ -105,13 +105,13 @@ function HomePage() {
 
 function AdaptCell({ icon, label, value, hint }: { icon: React.ReactNode; label: string; value: string; hint: string }) {
   return (
-    <div className="glass rounded-2xl p-3">
-      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+    <div className="glass rounded-xl px-2.5 py-2.5">
+      <div className="flex items-center gap-1 text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
         {icon}
         {label}
       </div>
-      <div className="mt-2 text-lg font-semibold tracking-tight">{value}</div>
-      <div className="text-[10px] text-muted-foreground">{hint}</div>
+      <div className="mt-1.5 text-[10px] text-foreground/70 leading-tight">{hint}</div>
+      <div className="mt-1 text-[15px] font-semibold tracking-tight text-glow">{value}</div>
     </div>
   );
 }
