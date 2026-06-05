@@ -222,9 +222,11 @@ export function streakDays(): number {
 // ---- subscriptions (cross-component reactivity) ----
 type Listener = () => void;
 const listeners = new Set<Listener>();
-export function subscribe(fn: Listener) {
+export function subscribe(fn: Listener): () => void {
   listeners.add(fn);
-  return () => listeners.delete(fn);
+  return () => {
+    listeners.delete(fn);
+  };
 }
 function emit() {
   listeners.forEach((fn) => fn());
